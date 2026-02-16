@@ -1,31 +1,226 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>Продажа идей</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IdeaMarket — платформа продажи идей</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav">
+        <div class="logo">IdeaMarket</div>
+        <div class="nav-links">
+          <a href="#market">Маркет</a>
+          <a href="#how">Как работает</a>
+          <a href="#pricing">Тарифы</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <button class="nav-cta">Зарегистрироваться</button>
+      </nav>
+      <div class="hero-content">
+        <div>
+          <p class="eyebrow">Идеи, которые становятся бизнесом</p>
+          <h1>Площадка для продажи, покупки и масштабирования идей</h1>
+          <p class="subhead">
+            Размещайте свои концепции, получайте проверку экспертов и находите инвесторов,
+            которые готовы запускать новые проекты уже сегодня.
+          </p>
+          <div class="hero-actions">
+            <button class="primary">Продать идею</button>
+            <button class="ghost">Купить идею</button>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <span>4 200+</span>
+              <p>Проверенных идей</p>
+            </div>
+            <div>
+              <span>650+</span>
+              <p>Инвесторов и компаний</p>
+            </div>
+            <div>
+              <span>92%</span>
+              <p>Успешных сделок</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="badge">Топ недели</div>
+          <h3>Сеть кофеен с AI-бариста</h3>
+          <p>
+            Автоматизированные точки с персонализированными напитками, кросс-продажами и
+            аналитикой спроса.
+          </p>
+          <div class="card-footer">
+            <div>
+              <strong>₽1.6M</strong>
+              <span>Запрос основателя</span>
+            </div>
+            <button class="outline">Подробнее</button>
+          </div>
+        </div>
+      </div>
+    </header>
 
-  <header>
-    <h1>Маркетплейс идей</h1>
-    <p>Покупайте и продавайте готовые бизнес-идеи</p>
-    <button>Разместить идею</button>
-  </header>
+    <section class="market" id="market">
+      <div class="section-title">
+        <h2>Категории идей</h2>
+        <p>От технологий до социального предпринимательства — подберите направление.</p>
+      </div>
+      <div class="grid">
+        <article>
+          <h3>Tech & SaaS</h3>
+          <p>Готовые прототипы, дорожные карты и потенциальные команды.</p>
+          <span>1 320 идей</span>
+        </article>
+        <article>
+          <h3>Retail & Food</h3>
+          <p>Новые форматы заведений, франшизы и умные продукты питания.</p>
+          <span>870 идей</span>
+        </article>
+        <article>
+          <h3>Green & ESG</h3>
+          <p>Экологические стартапы, переработка и устойчивое производство.</p>
+          <span>560 идей</span>
+        </article>
+        <article>
+          <h3>Creative Economy</h3>
+          <p>Маркетплейсы контента, комьюнити и культурные проекты.</p>
+          <span>720 идей</span>
+        </article>
+      </div>
+    </section>
 
-  <section>
-    <h2>Почему мы?</h2>
-    <ul>
-      <li>Проверенные идеи</li>
-      <li>Готовые бизнес-модели</li>
-      <li>Поддержка авторов</li>
-    </ul>
-  </section>
+    <section class="how" id="how">
+      <div class="section-title">
+        <h2>Как работает IdeaMarket</h2>
+        <p>Прозрачный процесс — от публикации до сделки.</p>
+      </div>
+      <div class="steps">
+        <div>
+          <span>01</span>
+          <h3>Публикуете идею</h3>
+          <p>Заполняете карточку, добавляете исследования, презентации и видео.</p>
+        </div>
+        <div>
+          <span>02</span>
+          <h3>Проходите верификацию</h3>
+          <p>Эксперты оценивают реалистичность, рынок и готовность к запуску.</p>
+        </div>
+        <div>
+          <span>03</span>
+          <h3>Закрываете сделку</h3>
+          <p>Система защищает права, формирует договор и переводит оплату.</p>
+        </div>
+      </div>
+    </section>
 
-  <footer>
-    <p>© 2026 Маркетплейс идей</p>
-  </footer>
+    <section class="pricing" id="pricing">
+      <div class="section-title">
+        <h2>Тарифы</h2>
+        <p>Выберите уровень поддержки и продвижения.</p>
+      </div>
+      <div class="pricing-grid">
+        <article>
+          <h3>Start</h3>
+          <p class="price">₽0</p>
+          <ul>
+            <li>1 идея в месяц</li>
+            <li>Базовая верификация</li>
+            <li>Доступ к чату покупателей</li>
+          </ul>
+          <button class="outline">Выбрать</button>
+        </article>
+        <article class="highlight">
+          <h3>Pro</h3>
+          <p class="price">₽4 900</p>
+          <ul>
+            <li>10 идей в месяц</li>
+            <li>Поддержка аналитика</li>
+            <li>Продвижение в витрине</li>
+          </ul>
+          <button class="primary">Попробовать</button>
+        </article>
+        <article>
+          <h3>Enterprise</h3>
+          <p class="price">Индивидуально</p>
+          <ul>
+            <li>Неограниченный каталог</li>
+            <li>Личный менеджер</li>
+            <li>Сделки под NDA</li>
+          </ul>
+          <button class="outline">Связаться</button>
+        </article>
+      </div>
+    </section>
 
-</body>
+    <section class="cta">
+      <div>
+        <h2>Получите первую заявку уже сегодня</h2>
+        <p>
+          Зарегистрируйтесь и откройте доступ к клиентам, инвесторам и корпоративным
+          партнерам.
+        </p>
+      </div>
+      <button class="primary">Создать аккаунт</button>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="section-title">
+        <h2>Частые вопросы</h2>
+        <p>Все, что нужно знать перед размещением идеи.</p>
+      </div>
+      <div class="faq-grid">
+        <div>
+          <h3>Как защищаются мои права?</h3>
+          <p>Платформа фиксирует авторство, шифрует документы и поддерживает NDA.</p>
+        </div>
+        <div>
+          <h3>Можно ли привлечь команду?</h3>
+          <p>Да, в карточке идеи можно указать роли и разместить заявки на соавторов.</p>
+        </div>
+        <div>
+          <h3>Какие форматы идей принимаются?</h3>
+          <p>От ранних концепций до готовых MVP — главное, чтобы была ценность.</p>
+        </div>
+        <div>
+          <h3>Когда приходит оплата?</h3>
+          <p>После подписания сделки средства резервируются и переводятся автоматически.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <h3>IdeaMarket</h3>
+        <p>Создаем рынок, где идеи становятся реальным бизнесом.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <span>Покупателям</span>
+          <a href="#">Каталог</a>
+          <a href="#">Сделки</a>
+          <a href="#">Инвесторам</a>
+        </div>
+        <div>
+          <span>Авторам</span>
+          <a href="#">Публикация</a>
+          <a href="#">Поддержка</a>
+          <a href="#">Документы</a>
+        </div>
+        <div>
+          <span>Контакты</span>
+          <a href="mailto:hello@ideamarket.io">hello@ideamarket.io</a>
+          <a href="tel:+74950000000">+7 (495) 000-00-00</a>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
