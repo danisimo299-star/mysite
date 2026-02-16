@@ -1,285 +1,305 @@
-const STORAGE_KEY = "ideamarket_data_v1";
+:root {
+  --bg: #0b0d13;
+  --surface: #151923;
+  --surface-2: #1d2330;
+  --text: #f8f9fc;
+  --muted: #aab1c5;
+  --primary: #7c4dff;
+  --primary-2: #6a3cff;
+  --accent: #20e3b2;
+  --danger: #ff6b6b;
+}
 
-const defaultIdeas = [
-  {
-    id: crypto.randomUUID(),
-    title: "AI-консьерж для ЖК",
-    category: "Tech",
-    price: 180000,
-    description: "Чат-бот для управляющих компаний: заявки, платежи, уведомления жильцам.",
-    author: "Команда SmartDom",
-    createdAt: Date.now() - 100000,
-    owner: "market"
-  },
-  {
-    id: crypto.randomUUID(),
-    title: "Даркстор здорового питания",
-    category: "Food",
-    price: 120000,
-    description: "Мини-склад и доставка рационов за 15 минут в бизнес-кварталах.",
-    author: "Елена",
-    createdAt: Date.now() - 90000,
-    owner: "market"
-  },
-  {
-    id: crypto.randomUUID(),
-    title: "Маркетплейс микрокурсов",
-    category: "Education",
-    price: 95000,
-    description: "Платформа коротких навыковых курсов с фокусом на трудоустройство.",
-    author: "SkillFoundry",
-    createdAt: Date.now() - 80000,
-    owner: "market"
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  background: linear-gradient(170deg, #0f1220 0%, #090b11 60%);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: rgba(11, 13, 19, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #232939;
+}
+
+.brand {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 6rem;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+.hero {
+  background: linear-gradient(130deg, var(--primary) 0%, #7e57ff 35%, #5a31c4 100%);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 0.6rem;
+}
+
+.hero p {
+  color: #f2ebff;
+  margin-bottom: 1.2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.section-head {
+  margin-bottom: 1.2rem;
+}
+
+.section-head p {
+  color: var(--muted);
+}
+
+.cards {
+  display: grid;
+  gap: 1rem;
+}
+
+.cards-2 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.cards-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid #252c3f;
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid #333c56;
+  border-radius: 10px;
+  color: var(--text);
+  padding: 0.75rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form {
+  max-width: 700px;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.form label {
+  display: grid;
+  gap: 0.45rem;
+  font-size: 0.95rem;
+  color: #d8def1;
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn:hover {
+  background: var(--primary-2);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid #495173;
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  background: #222a3e;
+}
+
+.btn-small {
+  padding: 0.55rem 0.75rem;
+  font-size: 0.88rem;
+}
+
+.idea-card {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.idea-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.badge {
+  background: #2a3146;
+  color: #d4dcf2;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  padding: 0.28rem 0.6rem;
+}
+
+.idea-price {
+  color: var(--accent);
+}
+
+.idea-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.cart-panel {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  width: min(360px, calc(100vw - 2rem));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.list {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+  max-height: 160px;
+  overflow: auto;
+}
+
+.list li {
+  border: 1px solid #2f3550;
+  border-radius: 8px;
+  padding: 0.4rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.toast {
+  position: fixed;
+  top: 85px;
+  right: 1rem;
+  background: #132030;
+  border: 1px solid #2e4a69;
+  color: #dff2ff;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 860px) {
+  .toolbar {
+    grid-template-columns: 1fr;
   }
-];
 
-const state = {
-  ideas: [],
-  cart: []
-};
-
-const pageMap = {
-  home: document.getElementById("page-home"),
-  market: document.getElementById("page-market"),
-  sell: document.getElementById("page-sell"),
-  my: document.getElementById("page-my")
-};
-
-const marketGrid = document.getElementById("marketGrid");
-const myIdeasNode = document.getElementById("myIdeas");
-const cartList = document.getElementById("cartList");
-const cartTotal = document.getElementById("cartTotal");
-const toastNode = document.getElementById("toast");
-const ideaCardTemplate = document.getElementById("ideaCardTemplate");
-
-function saveState() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({ ideas: state.ideas, cart: state.cart }));
-}
-
-function loadState() {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) {
-    state.ideas = [...defaultIdeas];
-    state.cart = [];
-    saveState();
-    return;
+  .topbar {
+    flex-wrap: wrap;
   }
 
-  try {
-    const parsed = JSON.parse(raw);
-    state.ideas = Array.isArray(parsed.ideas) && parsed.ideas.length ? parsed.ideas : [...defaultIdeas];
-    state.cart = Array.isArray(parsed.cart) ? parsed.cart : [];
-  } catch {
-    state.ideas = [...defaultIdeas];
-    state.cart = [];
-  }
-}
-
-function money(value) {
-  return `₽${Number(value).toLocaleString("ru-RU")}`;
-}
-
-function showToast(message) {
-  toastNode.textContent = message;
-  toastNode.classList.add("show");
-  clearTimeout(showToast.timer);
-  showToast.timer = setTimeout(() => toastNode.classList.remove("show"), 1800);
-}
-
-function switchPage(route) {
-  Object.values(pageMap).forEach((node) => node.classList.remove("active"));
-  const next = pageMap[route] || pageMap.home;
-  next.classList.add("active");
-}
-
-function renderIdeaCard(idea, { showDelete = false } = {}) {
-  const fragment = ideaCardTemplate.content.cloneNode(true);
-  const card = fragment.querySelector(".idea-card");
-
-  card.querySelector(".badge").textContent = idea.category;
-  card.querySelector(".idea-price").textContent = money(idea.price);
-  card.querySelector(".idea-title").textContent = idea.title;
-  card.querySelector(".idea-description").textContent = idea.description;
-  card.querySelector(".idea-meta").textContent = `Автор: ${idea.author}`;
-
-  const buyBtn = card.querySelector(".js-buy");
-  buyBtn.addEventListener("click", () => addToCart(idea.id));
-
-  const deleteBtn = card.querySelector(".js-delete");
-  if (showDelete) {
-    deleteBtn.addEventListener("click", () => deleteIdea(idea.id));
-  } else {
-    deleteBtn.remove();
+  .cart-panel {
+    position: static;
+    margin: 0 1.5rem 1.5rem;
+    width: auto;
   }
 
-  return fragment;
-}
-
-function filteredIdeas() {
-  const query = document.getElementById("searchInput").value.trim().toLowerCase();
-  const category = document.getElementById("categoryFilter").value;
-  const sort = document.getElementById("sortFilter").value;
-
-  let items = [...state.ideas];
-
-  if (query) {
-    items = items.filter(
-      (i) =>
-        i.title.toLowerCase().includes(query) ||
-        i.description.toLowerCase().includes(query) ||
-        i.author.toLowerCase().includes(query)
-    );
+  .container {
+    padding-bottom: 2rem;
   }
-
-  if (category !== "all") {
-    items = items.filter((i) => i.category === category);
-  }
-
-  if (sort === "priceAsc") items.sort((a, b) => a.price - b.price);
-  if (sort === "priceDesc") items.sort((a, b) => b.price - a.price);
-  if (sort === "newest") items.sort((a, b) => b.createdAt - a.createdAt);
-
-  return items;
 }
-
-function renderMarket() {
-  marketGrid.innerHTML = "";
-  const items = filteredIdeas();
-
-  if (!items.length) {
-    marketGrid.innerHTML = `<article class="card"><p>Ничего не найдено. Попробуйте изменить фильтры.</p></article>`;
-    return;
-  }
-
-  items.forEach((idea) => {
-    marketGrid.appendChild(renderIdeaCard(idea));
-  });
-}
-
-function renderMyIdeas() {
-  myIdeasNode.innerHTML = "";
-  const mine = state.ideas.filter((i) => i.owner === "me");
-
-  if (!mine.length) {
-    myIdeasNode.innerHTML = `<article class="card"><p>Пока нет идей. Разместите первую на вкладке «Разместить идею».</p></article>`;
-    return;
-  }
-
-  mine.forEach((idea) => myIdeasNode.appendChild(renderIdeaCard(idea, { showDelete: true })));
-}
-
-function renderCart() {
-  cartList.innerHTML = "";
-  let total = 0;
-
-  if (!state.cart.length) {
-    cartList.innerHTML = `<li><span class="muted">Корзина пуста</span></li>`;
-  }
-
-  state.cart.forEach((id) => {
-    const idea = state.ideas.find((i) => i.id === id);
-    if (!idea) return;
-
-    total += Number(idea.price);
-
-    const li = document.createElement("li");
-    li.innerHTML = `<span>${idea.title}</span><button class="btn btn-secondary btn-small">✕</button>`;
-    li.querySelector("button").addEventListener("click", () => removeFromCart(id));
-    cartList.appendChild(li);
-  });
-
-  cartTotal.textContent = `Итого: ${money(total)}`;
-}
-
-function addToCart(id) {
-  if (state.cart.includes(id)) {
-    showToast("Идея уже добавлена в сделки");
-    return;
-  }
-
-  state.cart.push(id);
-  saveState();
-  renderCart();
-  showToast("Идея добавлена в сделки");
-}
-
-function removeFromCart(id) {
-  state.cart = state.cart.filter((item) => item !== id);
-  saveState();
-  renderCart();
-}
-
-function deleteIdea(id) {
-  state.ideas = state.ideas.filter((idea) => idea.id !== id);
-  state.cart = state.cart.filter((cartId) => cartId !== id);
-  saveState();
-  renderMarket();
-  renderMyIdeas();
-  renderCart();
-  showToast("Идея удалена");
-}
-
-function handleCreateIdea(event) {
-  event.preventDefault();
-  const formData = new FormData(event.target);
-
-  const idea = {
-    id: crypto.randomUUID(),
-    title: String(formData.get("title")).trim(),
-    category: String(formData.get("category")),
-    price: Number(formData.get("price")),
-    description: String(formData.get("description")).trim(),
-    author: String(formData.get("author")).trim(),
-    createdAt: Date.now(),
-    owner: "me"
-  };
-
-  state.ideas.push(idea);
-  saveState();
-  renderMarket();
-  renderMyIdeas();
-  event.target.reset();
-  switchPage("my");
-  showToast("Идея опубликована");
-}
-
-function checkout() {
-  if (!state.cart.length) {
-    showToast("Сначала добавьте идеи в сделки");
-    return;
-  }
-
-  const purchasedCount = state.cart.length;
-  state.cart = [];
-  saveState();
-  renderCart();
-  showToast(`Сделка оформлена: ${purchasedCount} шт.`);
-}
-
-function registerEvents() {
-  document.querySelectorAll("[data-route]").forEach((node) => {
-    node.addEventListener("click", (event) => {
-      event.preventDefault();
-      switchPage(node.dataset.route);
-    });
-  });
-
-  document.getElementById("goSellBtn").addEventListener("click", () => switchPage("sell"));
-  document.getElementById("ideaForm").addEventListener("submit", handleCreateIdea);
-  document.getElementById("checkoutBtn").addEventListener("click", checkout);
-
-  ["searchInput", "categoryFilter", "sortFilter"].forEach((id) => {
-    document.getElementById(id).addEventListener("input", renderMarket);
-    document.getElementById(id).addEventListener("change", renderMarket);
-  });
-}
-
-function init() {
-  loadState();
-  registerEvents();
-  renderMarket();
-  renderMyIdeas();
-  renderCart();
-}
-
-init();
